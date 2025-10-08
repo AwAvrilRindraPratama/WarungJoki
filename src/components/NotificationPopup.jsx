@@ -184,10 +184,10 @@ const NotificationPopup = () => {
                     transition={{ delay: 0.2 }}
                     className="space-y-2"
                   >
-                    <h4 className="font-semibold text-slate-800 text-sm font-space">
+                    <h4 className="font-semibold text-slate-800 text-sm font-inter">
                       {testimonials[currentIndex].name}
                     </h4>
-                    <p className="text-slate-600 text-xs leading-relaxed font-exo">
+                    <p className="text-slate-600 text-xs leading-relaxed font-poppins">
                       {testimonials[currentIndex].message}
                     </p>
                   </motion.div>
@@ -197,7 +197,7 @@ const NotificationPopup = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
-                    className="text-slate-400 text-xs mt-2 font-space"
+                    className="text-slate-400 text-xs mt-2 font-poppins"
                   >
                     {testimonials[currentIndex].timestamp}
                   </motion.p>

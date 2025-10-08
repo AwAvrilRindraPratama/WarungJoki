@@ -186,13 +186,13 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 2.5 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl max-w-4xl mx-auto font-medium leading-relaxed font-exo text-center px-4"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl max-w-4xl mx-auto font-medium leading-relaxed font-exo text-center px-4 text-shadow-light"
           >
             Saatnya tampil beda dengan website profesional yang{" "}
-            <span className="text-yellow-300 font-bold">mempesona</span>.
+            <span className="text-yellow-300 font-bold text-shadow-light">mempesona</span>.
             Buat bisnis, Tugas atau personal brand kamu semakin{" "}
-            <span className="text-pink-400 font-bold">berkelas</span> dan{" "}
-            <span className="text-green-400 font-bold">lebih baik</span>.
+            <span className="text-pink-400 font-bold text-shadow-light">berkelas</span> dan{" "}
+            <span className="text-green-400 font-bold text-shadow-light">lebih baik</span>.
           </motion.p>
         </motion.div>
 
@@ -208,9 +208,9 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 5 }}
-            className="text-xs sm:text-sm mb-4 opacity-70 text-center font-space"
+            className="text-xs sm:text-sm mb-4 opacity-70 text-center font-space text-shadow-light"
           >
-            Scroll untuk melihat testimoni live
+            Scroll untuk melihat testimoni Klien
           </motion.p>
           
           <motion.div
@@ -221,9 +221,9 @@ export default function App() {
             transition={{ repeat: Infinity, duration: 2 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="text-white hover:text-yellow-300 transition-colors duration-300"
+            className="text-white hover:text-yellow-300 transition-colors duration-300 text-shadow-light"
           >
-            <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8" />
+            <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8 text-shadow-light" />
           </motion.div>
           
           {/* Additional Arrow for emphasis */}
@@ -234,9 +234,9 @@ export default function App() {
             }}
             transition={{ repeat: Infinity, duration: 1.5, delay: 0.3 }}
             whileHover={{ scale: 1.1 }}
-            className="text-white -mt-2 hover:text-yellow-300 transition-colors duration-300"
+            className="text-white -mt-2 hover:text-yellow-300 transition-colors duration-300 text-shadow-light"
           >
-            <ChevronDown className="w-4 h-4 sm:w-6 sm:h-6" />
+            <ChevronDown className="w-4 h-4 sm:w-6 sm:h-6 text-shadow-light" />
           </motion.div>
         </motion.div>
       </section>
@@ -251,8 +251,8 @@ export default function App() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 font-space">Testimoni Klien Kami</h2>
-          <p className="text-sm sm:text-base md:text-lg opacity-90 max-w-xl mx-auto px-4 sm:px-6 font-exo">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 font-inter text-white text-shadow-subtle">Testimoni Klien Kami</h2>
+          <p className="text-sm sm:text-base md:text-lg text-gray-100 max-w-xl mx-auto px-4 sm:px-6 font-poppins leading-relaxed text-shadow-light">
             Lihat langsung testimoni dan feedback dari klien yang telah bekerja sama dengan kami
           </p>
         </motion.div>
@@ -279,11 +279,11 @@ export default function App() {
             className="space-y-6"
           >
             <div className="text-center lg:text-left">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 font-space bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Terpercaya di Seluruh Kalimantan
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 font-inter bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Pelayanan Terpercaya di Samarinda
               </h3>
-              <p className="text-base sm:text-lg md:text-xl opacity-90 mb-6 font-exo leading-relaxed">
-                Project kami telah <span className="text-yellow-300 font-semibold">menjangkau berbagai kampus juga institusi</span> di Kota Samarinda dan wilayah luar kota.
+              <p className="text-base sm:text-lg md:text-xl text-gray-100 mb-6 font-poppins leading-relaxed text-shadow-light">
+                Kami telah <span className="text-yellow-300 font-semibold text-shadow-light">membantu mahasiswa dan profesional</span> di Kota Samarinda menyelesaikan berbagai project dengan kualitas terbaik.
               </p>
             </div>
 
@@ -291,34 +291,34 @@ export default function App() {
             <div className="grid grid-cols-2 gap-4">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
+                className="text-center p-4"
               >
-                <div className="text-2xl sm:text-3xl font-bold text-green-400 mb-1 font-space">8+</div>
-                <p className="text-xs sm:text-sm opacity-80 font-exo">Kampus Partner</p>
+                <div className="text-2xl sm:text-3xl font-bold text-green-400 mb-1 font-inter text-shadow-md">100%</div>
+                <p className="text-xs sm:text-sm text-gray-200 font-poppins text-shadow-light">Dikerjakan Oleh Profesional</p>
               </motion.div>
               
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
+                className="text-center p-4"
               >
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1 font-space">200+</div>
-                <p className="text-xs sm:text-sm opacity-80 font-exo">Project Selesai</p>
+                <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1 font-inter text-shadow-md">100%</div>
+                <p className="text-xs sm:text-sm text-gray-200 font-poppins text-shadow-light">Terjamin Kepuasan</p>
               </motion.div>
               
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
+                className="text-center p-4"
               >
-                <div className="text-2xl sm:text-3xl font-bold text-purple-400 mb-1 font-space">4+</div>
-                <p className="text-xs sm:text-sm opacity-80 font-exo">Kota Jangkauan</p>
+                <div className="text-2xl sm:text-3xl font-bold text-purple-400 mb-1 font-inter text-shadow-md">24h</div>
+                <p className="text-xs sm:text-sm text-gray-200 font-poppins text-shadow-light">Respon Cepat</p>
               </motion.div>
               
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
+                className="text-center p-4"
               >
-                <div className="text-2xl sm:text-3xl font-bold text-pink-400 mb-1 font-space">98%</div>
-                <p className="text-xs sm:text-sm opacity-80 font-exo">Kepuasan Klien</p>
+                <div className="text-2xl sm:text-3xl font-bold text-pink-400 mb-1 font-inter text-shadow-md">100%</div>
+                <p className="text-xs sm:text-sm text-gray-200 font-poppins text-shadow-light">Garansi Revisi</p>
               </motion.div>
             </div>
           </motion.div>
@@ -334,10 +334,10 @@ export default function App() {
           transition={{ duration: 0.8 }}
           className="text-center mb-8"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-space bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-inter bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
             Cape, Sibuk? Kami siap mengerjakan tugas anda!
           </h2>
-          <p className="text-base sm:text-lg md:text-xl opacity-90 max-w-2xl mx-auto px-4 sm:px-6 font-exo">
+          <p className="text-base sm:text-lg md:text-xl text-gray-100 max-w-2xl mx-auto px-4 sm:px-6 font-poppins leading-relaxed text-shadow-light">
             Bergabunglah dengan ratusan klien yang telah mempercayai layanan kami untuk menyelesaikan tugas mereka
           </p>
         </motion.div>
@@ -354,20 +354,20 @@ export default function App() {
             whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(34, 197, 94, 0.4)" }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.open('https://whatsapp.com/channel/0029Vb6OngjEAKW6TXjFE71h', '_blank')}
-            className="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-5 px-6 sm:px-8 rounded-2xl transition-all duration-300 flex items-center justify-center space-x-3 shadow-xl font-space text-base sm:text-lg"
+            className="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-5 px-6 sm:px-8 rounded-2xl transition-all duration-300 flex items-center justify-center space-x-3 shadow-xl font-inter text-base sm:text-lg"
           >
-            <span className="text-xl">💬</span>
-            <span>Bergabung Channel</span>
+            <span className="text-xl text-shadow-light">💬</span>
+            <span className="text-shadow-light">Bergabung Channel</span>
           </motion.button>
           
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(168, 85, 247, 0.4)" }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.open(`https://wa.me/${WA_NUMBER}?text=${waTemplate}`, '_blank')}
-            className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 sm:py-5 px-6 sm:px-8 rounded-2xl transition-all duration-300 flex items-center justify-center space-x-3 shadow-xl font-space text-base sm:text-lg"
+            className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 sm:py-5 px-6 sm:px-8 rounded-2xl transition-all duration-300 flex items-center justify-center space-x-3 shadow-xl font-inter text-base sm:text-lg"
           >
-            <span className="text-xl">🚀</span>
-            <span>Pesan Sekarang!</span>
+            <span className="text-xl text-shadow-light">🚀</span>
+            <span className="text-shadow-light">Pesan Sekarang!</span>
           </motion.button>
         </motion.div>
 
@@ -379,20 +379,20 @@ export default function App() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl px-4"
         >
-          <div className="text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-            <div className="text-3xl mb-3">⚡</div>
-            <h3 className="font-semibold mb-2 font-space">Proses Cepat</h3>
-            <p className="text-sm opacity-80 font-exo">Pengerjaan dalam 24-48 jam (tergantung kompleksitas proyek)</p>
+          <div className="text-center p-6">
+            <div className="text-3xl mb-3 text-shadow-light">⚡</div>
+            <h3 className="font-semibold mb-2 font-inter text-white text-shadow-subtle">Proses Cepat</h3>
+            <p className="text-sm text-gray-200 font-poppins text-shadow-light">Pengerjaan dalam 24-48 jam (tergantung kompleksitas proyek)</p>
           </div>
-          <div className="text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-            <div className="text-3xl mb-3">💎</div>
-            <h3 className="font-semibold mb-2 font-space">Kualitas Premium</h3>
-            <p className="text-sm opacity-80 font-exo">Hasil berkualitas tinggi</p>
+          <div className="text-center p-6">
+            <div className="text-3xl mb-3 text-shadow-light">💎</div>
+            <h3 className="font-semibold mb-2 font-inter text-white text-shadow-subtle">Kualitas Premium</h3>
+            <p className="text-sm text-gray-200 font-poppins text-shadow-light">Hasil berkualitas tinggi</p>
           </div>
-          <div className="text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-            <div className="text-3xl mb-3">🛡️</div>
-            <h3 className="font-semibold mb-2 font-space">Garansi Revisi</h3>
-            <p className="text-sm opacity-80 font-exo">Revisi sampai puas!</p>
+          <div className="text-center p-6">
+            <div className="text-3xl mb-3 text-shadow-light">🛡️</div>
+            <h3 className="font-semibold mb-2 font-inter text-white text-shadow-subtle">Garansi Revisi</h3>
+            <p className="text-sm text-gray-200 font-poppins text-shadow-light">Revisi sampai puas!</p>
           </div>
         </motion.div>
       </section>

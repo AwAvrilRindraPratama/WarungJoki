@@ -66,11 +66,11 @@ const SimpleTestimoniCard = () => {
         
         {/* Header */}
         <div className="text-center mb-4">
-          <h3 className="text-2xl font-bold text-white font-space mb-2">Testimoni Klien</h3>
+          <h3 className="text-2xl font-bold text-white font-inter mb-2 text-shadow-subtle">Testimoni Klien</h3>
           <div className="flex items-center justify-center">
             <div className="flex items-center space-x-2">
               <div className={`w-2 h-2 rounded-full ${isPaused ? 'bg-yellow-400' : 'bg-green-400 animate-pulse'}`}></div>
-              <span className={`text-xs font-exo ${isPaused ? 'text-yellow-400' : 'text-green-400'}`}>
+              <span className={`text-xs font-poppins text-shadow-sm ${isPaused ? 'text-yellow-400' : 'text-green-400'}`}>
                 {isPaused ? 'Pause' : 'Auto Play'}
               </span>
             </div>
@@ -92,7 +92,7 @@ const SimpleTestimoniCard = () => {
                 stiffness: 300,
                 damping: 30
               }}
-              className="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900/70 rounded-xl p-6 flex flex-col"
+              className="absolute inset-0 bg-gradient-to-br from-slate-800/70 to-slate-900/80 rounded-xl p-6 flex flex-col backdrop-blur-sm border border-white/10"
             >
               {/* Gambar Testimoni - Portrait Style */}
               <div className="mb-6">
@@ -119,14 +119,14 @@ const SimpleTestimoniCard = () => {
                   </div>
 
                   {/* Message */}
-                  <p className="text-white font-exo text-sm leading-relaxed italic mb-4">
+                  <p className="text-white font-poppins text-sm leading-relaxed italic mb-4 text-shadow-subtle">
                     "{testimonials[currentIndex].message}"
                   </p>
                 </div>
 
                 {/* Client Info */}
                 <div className="border-t border-white/20 pt-4">
-                  <p className="text-blue-300 text-sm font-exo text-center">
+                  <p className="text-blue-200 text-sm font-inter text-center font-medium text-shadow-sm">
                     {testimonials[currentIndex].project}
                   </p>
                 </div>
@@ -168,7 +168,7 @@ const SimpleTestimoniCard = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="text-slate-400 text-xs text-center mt-4 font-exo"
+        className="text-gray-300 text-xs text-center mt-4 font-poppins text-shadow-light"
       >
         Testimoni dari klien yang telah menggunakan jasa kami
       </motion.p>

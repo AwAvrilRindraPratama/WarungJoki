@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Google Fonts untuk keterbacaan yang lebih baik */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 /* small helper styles */
 html, body, #root { height: 100%; }
-body { background: #000010; }
+body { 
+  background: #000010; 
+  font-family: 'Inter', 'Poppins', sans-serif;
+}
+
+/* Custom text shadows untuk keterbacaan yang lebih baik */
+.text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.text-shadow-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Shadow tipis untuk teks putih */
+.text-shadow-subtle {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-light {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Background overlay untuk teks yang lebih kontras */
+.text-backdrop {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.text-backdrop-light {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
