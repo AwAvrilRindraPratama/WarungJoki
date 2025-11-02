@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react' 
+import React, { useState } from 'react' 
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bell, X } from 'lucide-react'
+import { Bell, X, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const NotificationPopup = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const [isMinimized, setIsMinimized] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
-  // Data testimoni 
+  // Data testimoni dummy
   const testimonials = [
     {
       id: 1,
@@ -53,81 +52,63 @@ const NotificationPopup = () => {
     }
   ]
 
-  // Auto rotate testimoni
-  useEffect(() => {
-    if (!isMinimized) {
-      const interval = setInterval(() => {
-        setIsVisible(true)
-        setCurrentIndex((prevIndex) => 
-          prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-        )
-        
-        setTimeout(() => {
-          setIsVisible(false)
-        }, 4000)
-      }, 6000)
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+  }
 
-      return () => clearInterval(interval)
-    }
-  }, [testimonials.length, isMinimized])
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
 
-  // Show first notification
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true)
-      setTimeout(() => {
-        setIsVisible(false)
-      }, 4000)
-    }, 3000)
-
-    return () => clearTimeout(timer)
-  }, [])
+  const toggleNotification = () => {
+    setIsOpen(!isOpen)
+  }
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {/* Notification Bell - Always Visible */}
-      <motion.div
+      {/* Notification Bell Button - Always Visible */}
+      <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => setIsMinimized(!isMinimized)}
-        className="w-12 h-12 bg-gradient-blue rounded-full flex items-center justify-center shadow-lg cursor-pointer relative mb-3"
+        onClick={toggleNotification}
+        className="w-12 h-12 bg-gradient-blue rounded-full flex items-center justify-center shadow-lg cursor-pointer relative"
+        title="Lihat Testimoni"
       >
-        <Bell className={`w-6 h-6 text-white ${isVisible ? 'animate-pulse' : ''}`} />
+        <Bell className="w-6 h-6 text-white" />
         
-        {/* Notification Badge */}
-        {isVisible && !isMinimized && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center border-2 border-dark-950"
-          >
-            <span className="text-white text-xs font-bold">!</span>
-          </motion.div>
-        )}
-      </motion.div>
+        {/* Badge count */}
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center border-2 border-dark-950"
+        >
+          <span className="text-white text-xs font-bold">{testimonials.length}</span>
+        </motion.div>
+      </motion.button>
 
-      {/* Notification Card */}
+      {/* Notification Card - Manual Toggle */}
       <AnimatePresence>
-        {isVisible && !isMinimized && (
+        {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="glass rounded-xl p-4 shadow-2xl max-w-sm w-80 relative"
+            className="glass rounded-xl p-4 shadow-2xl max-w-sm w-80 relative mb-3"
           >
             {/* Close Button */}
             <button
-              onClick={() => setIsVisible(false)}
-              className="absolute top-2 right-2 w-6 h-6 bg-dark-800/50 hover:bg-dark-700 rounded-full flex items-center justify-center transition-colors"
+              onClick={toggleNotification}
+              className="absolute top-2 right-2 w-6 h-6 bg-dark-800/50 hover:bg-dark-700 rounded-full flex items-center justify-center transition-colors z-10"
             >
               <X className="w-4 h-4 text-gray-400" />
             </button>
 
             {/* Content */}
-            <div className="flex items-start space-x-3">
+            <div className="flex items-start space-x-3 mb-4">
               {/* Avatar */}
               <motion.div
+                key={currentIndex}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.1 }}
@@ -139,8 +120,9 @@ const NotificationPopup = () => {
               {/* Message */}
               <div className="flex-1 min-w-0 pr-4">
                 <motion.div
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  key={`content-${currentIndex}`}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
                   <h4 className="font-semibold text-white text-sm mb-1">
@@ -161,6 +143,29 @@ const NotificationPopup = () => {
                   {testimonials[currentIndex].timestamp}
                 </motion.p>
               </div>
+            </div>
+
+            {/* Navigation & Counter */}
+            <div className="flex items-center justify-between border-t border-primary-500/20 pt-3">
+              <button
+                onClick={handlePrev}
+                className="p-1.5 hover:bg-primary-600/20 rounded-lg transition-colors"
+                title="Previous"
+              >
+                <ChevronLeft className="w-4 h-4 text-primary-400" />
+              </button>
+
+              <div className="text-xs text-gray-400">
+                {currentIndex + 1} / {testimonials.length}
+              </div>
+
+              <button
+                onClick={handleNext}
+                className="p-1.5 hover:bg-primary-600/20 rounded-lg transition-colors"
+                title="Next"
+              >
+                <ChevronRight className="w-4 h-4 text-primary-400" />
+              </button>
             </div>
 
             {/* Success Checkmark */}
