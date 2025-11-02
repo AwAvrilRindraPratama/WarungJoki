@@ -3,12 +3,41 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      colors: {
+        primary: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+          950: '#172554',
+        },
+        dark: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+          950: '#020617',
+        }
+      },
       fontFamily: {
-        'orbitron': ['Orbitron', 'monospace'], // Untuk heading/title futuristik
-        'exo': ['Exo 2', 'sans-serif'], // Untuk body text modern
-        'space': ['Space Grotesk', 'sans-serif'], // Untuk accent text
-        'inter': ['Inter', 'sans-serif'], // Untuk readability yang baik
-        'poppins': ['Poppins', 'sans-serif'], // Untuk body text yang mudah dibaca
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Poppins', 'sans-serif'],
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },

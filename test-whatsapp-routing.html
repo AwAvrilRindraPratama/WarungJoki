@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test WhatsApp Round-Robin System</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+    .subtitle {
+      color: #93c5fd;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .numbers-list {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    .number-item {
+      color: white;
+      padding: 10px;
+      margin: 5px 0;
+      background: rgba(59, 130, 246, 0.2);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      font-family: 'Courier New', monospace;
+    }
+    .number-badge {
+      background: #3b82f6;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+    }
+    .test-button {
+      width: 100%;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 10px 0;
+    }
+    .test-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+    }
+    .test-button:active {
+      transform: translateY(0);
+    }
+    .reset-button {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    }
+    .info-box {
+      background: rgba(34, 197, 94, 0.2);
+      border-left: 4px solid #22c55e;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+      color: white;
+    }
+    .log-container {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .log-item {
+      color: #93c5fd;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .log-item:last-child {
+      border-bottom: none;
+    }
+    .current-counter {
+      background: rgba(34, 197, 94, 0.3);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      margin: 20px 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔄 WhatsApp Round-Robin Test</h1>
+    <p class="subtitle">Testing Sequential Number Distribution</p>
+    
+    <div class="numbers-list">
+      <div class="number-item">
+        <div class="number-badge">1</div>
+        <span>+62 821-8907-4832</span>
+      </div>
+      <div class="number-item">
+        <div class="number-badge">2</div>
+        <span>+62 822-4658-4629</span>
+      </div>
+      <div class="number-item">
+        <div class="number-badge">3</div>
+        <span>+62 812-4628-3958</span>
+      </div>
+      <div class="number-item">
+        <div class="number-badge">4</div>
+        <span>+62 822-5694-0109</span>
+      </div>
+      <div class="number-item">
+        <div class="number-badge">5</div>
+        <span>+62 877-8421-2422</span>
+      </div>
+    </div>
+
+    <div class="current-counter" id="currentCounter">
+      Next Number: <span id="counterValue">1</span> of 5
+    </div>
+
+    <div class="info-box">
+      <strong>📍 Cara Kerja:</strong><br>
+      Setiap klik akan menggunakan nomor berikutnya secara berurutan. 
+      Setelah nomor 5, akan kembali ke nomor 1.
+    </div>
+
+    <button class="test-button" onclick="testRoundRobin()">
+      📱 Test Click WhatsApp (Lihat Console)
+    </button>
+
+    <button class="test-button" onclick="autoTest5Times()">
+      🔄 Auto Test 5x (Full Cycle)
+    </button>
+
+    <button class="test-button reset-button" onclick="resetCounter()">
+      🔄 Reset Counter
+    </button>
+
+    <div class="log-container" id="logContainer">
+      <div class="log-item">📝 Log will appear here...</div>
+    </div>
+  </div>
+
+  <script>
+    const WA_NUMBERS = [
+      '+6282189074832',
+      '+6282246584629',
+      '+6281246283958',
+      '+6282256940109',
+      '+6287784212422'
+    ];
+
+    let logs = [];
+
+    function updateCounterDisplay() {
+      const currentCounter = parseInt(localStorage.getItem('waCounter') || '0', 10);
+      document.getElementById('counterValue').textContent = currentCounter + 1;
+    }
+
+    function addLog(message, isSuccess = true) {
+      const timestamp = new Date().toLocaleTimeString('id-ID');
+      const emoji = isSuccess ? '✅' : '❌';
+      const logMessage = `[${timestamp}] ${emoji} ${message}`;
+      
+      logs.unshift(logMessage);
+      if (logs.length > 20) logs.pop();
+      
+      const logContainer = document.getElementById('logContainer');
+      logContainer.innerHTML = logs.map(log => 
+        `<div class="log-item">${log}</div>`
+      ).join('');
+      
+      console.log(message);
+    }
+
+    function getNextWhatsAppNumber() {
+      const currentCounter = parseInt(localStorage.getItem('waCounter') || '0', 10);
+      const selectedNumber = WA_NUMBERS[currentCounter];
+      const nextCounter = (currentCounter + 1) % WA_NUMBERS.length;
+      
+      localStorage.setItem('waCounter', nextCounter.toString());
+      
+      addLog(`Using number ${currentCounter + 1}: ${selectedNumber}`);
+      addLog(`Next will be: ${nextCounter + 1}`);
+      
+      updateCounterDisplay();
+      
+      return selectedNumber;
+    }
+
+    function testRoundRobin() {
+      const selectedNumber = getNextWhatsAppNumber();
+      const waTemplate = encodeURIComponent('Halo! Saya tertarik dengan layanan Warung Joki. Bisa dijelaskan lebih lanjut?');
+      const url = `https://wa.me/${selectedNumber}?text=${waTemplate}`;
+      
+      console.log('🔄 Round-Robin Test');
+      console.log('📱 Opening WhatsApp:', url);
+      
+      addLog(`Opening WhatsApp: ${selectedNumber}`, true);
+      
+      // Uncomment line below to actually open WhatsApp
+      // window.open(url, '_blank');
+      
+      alert(`✅ Would open WhatsApp to: ${selectedNumber}\n\nCheck console for details!`);
+    }
+
+    function autoTest5Times() {
+      addLog('🚀 Starting auto test (5 clicks)...', true);
+      
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          const currentCounter = parseInt(localStorage.getItem('waCounter') || '0', 10);
+          const selectedNumber = WA_NUMBERS[currentCounter];
+          const nextCounter = (currentCounter + 1) % WA_NUMBERS.length;
+          
+          localStorage.setItem('waCounter', nextCounter.toString());
+          
+          addLog(`Auto Click ${i + 1}: Number ${currentCounter + 1} - ${selectedNumber}`, true);
+          updateCounterDisplay();
+          
+          if (i === 4) {
+            setTimeout(() => {
+              addLog('✅ Auto test completed! Check the sequence above.', true);
+            }, 500);
+          }
+        }, i * 1000);
+      }
+    }
+
+    function resetCounter() {
+      localStorage.setItem('waCounter', '0');
+      updateCounterDisplay();
+      addLog('🔄 Counter reset to 1', true);
+      alert('✅ Counter has been reset to number 1');
+    }
+
+    // Initialize display on load
+    updateCounterDisplay();
+    addLog('✅ Round-Robin system ready!', true);
+  </script>
+</body>
+</html>
