@@ -6,11 +6,11 @@ import NotificationPopup from './components/NotificationPopup'
 
 // Array of 5 WhatsApp numbers for round-robin distribution
 const WA_NUMBERS = [
-  '+6282189074832',  // Nomor 1
-  '+6282246584629',  // Nomor 2
-  '+6281246283958',  // Nomor 3
+  '+6282256940109',  // Nomor 1
+  '+6282256940109',  // Nomor 2
+  '+6282256940109',  // Nomor 3
   '+6282256940109',  // Nomor 4
-  '+6287784212422'   // Nomor 5
+  '+6282256940109'   // Nomor 5
 ]
 
 export default function App() {
