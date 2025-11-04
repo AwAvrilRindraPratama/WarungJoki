@@ -113,7 +113,7 @@ export default function App() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-4 sm:mb-6 leading-tight"
             >
-              Selesaikan Tugas Anda<br />
+              Selesaikan Tugas Anda Lorem Ipsum Dolor Sit Amet<br />
               <span className="bg-gradient-to-r from-primary-400 to-blue-500 bg-clip-text text-transparent">
                 Dengan Mudah & Cepat
               </span>
